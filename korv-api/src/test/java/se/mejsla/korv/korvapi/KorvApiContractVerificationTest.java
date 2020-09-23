@@ -28,8 +28,8 @@ import se.mejsla.korv.korvapi.KorvApiContractVerificationTest.InitializerKorvApi
 @ContextConfiguration(initializers = InitializerKorvApiVerifyContract.class)
 @Provider("korv-api")
 @VerificationReports
-@PactFolder("../korv-cli/target/pacts")
-//@PactBroker(host = "localhost", port="9292")
+//@PactFolder("../korv-cli/target/pacts")
+@PactBroker(host = "localhost", port="9292")
 public class KorvApiContractVerificationTest {
 
   Korv bullens = new Korv(1, "Bullens pilsnerkorv", "odefinierbar", 3);
