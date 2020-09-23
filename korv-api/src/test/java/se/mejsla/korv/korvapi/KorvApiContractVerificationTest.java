@@ -48,18 +48,4 @@ public class KorvApiContractVerificationTest {
     context.verifyInteraction();
   }
 
-  @State("Det finns korvar")
-  public void sausagesExists() {
-    when(korvkylen.korvarna()).thenReturn(List.of(bullens, falu));
-  }
-
-  @State("Det finns en korv med id 42")
-  public void sausages42Exists() {
-    when(korvkylen.korvarna()).thenReturn(List.of(vege));
-  }
-
-  @State("Det finns inga korvar")
-  public void noSausagesExists() {
-    when(korvkylen.korvarna()).thenReturn(Collections.emptyList());
-  }
 }
