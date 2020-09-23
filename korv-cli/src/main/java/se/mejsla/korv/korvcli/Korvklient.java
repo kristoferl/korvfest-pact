@@ -8,12 +8,13 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import java.util.Arrays;
 import org.springframework.boot.jackson.JsonComponentModule;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 
 public class Korvklient {
 
@@ -21,23 +22,6 @@ public class Korvklient {
 
   public Korvklient() {
     restTemplate = createRestTemplate();
-  }
-
-  public Korvar hämtaAlla() {
-    ResponseEntity<Korvar> forEntity = restTemplate.getForEntity("http://localhost:8080/korvar", Korvar.class);
-    return forEntity.getBody();
-  }
-
-  public Korv hämta(final int id) {
-    ResponseEntity<Korv> forEntity = restTemplate.getForEntity("http://localhost:8080/korvar/"+ id, Korv.class);
-    return forEntity.getBody();
-  }
-
-  private RestTemplate createRestTemplate() {
-    RestTemplate template = new RestTemplate();
-    template.setMessageConverters(
-        Arrays.asList(new MappingJackson2HttpMessageConverter(getObjectMapper()), new FormHttpMessageConverter()));
-    return template;
   }
 
   private static ObjectMapper getObjectMapper() {
@@ -53,6 +37,23 @@ public class Korvklient {
         .registerModule(new JavaTimeModule())
         .registerModule(new ParameterNamesModule())
         .registerModule(new JsonComponentModule());
+  }
+
+  public Korvar hämtaAlla() {
+    ResponseEntity<Korvar> forEntity = restTemplate.getForEntity("http://localhost:8080/korvar", Korvar.class);
+    return forEntity.getBody();
+  }
+
+  public Korv hämta(final int id) {
+    ResponseEntity<Korv> forEntity = restTemplate.getForEntity("http://localhost:8080/korvar/" + id, Korv.class);
+    return forEntity.getBody();
+  }
+
+  private RestTemplate createRestTemplate() {
+    RestTemplate template = new RestTemplate();
+    template.setMessageConverters(
+        Arrays.asList(new MappingJackson2HttpMessageConverter(getObjectMapper()), new FormHttpMessageConverter()));
+    return template;
   }
 
 }

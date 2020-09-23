@@ -1,11 +1,5 @@
 package se.mejsla.korv.korvcli;
 
-import static io.pactfoundation.consumer.dsl.LambdaDsl.newJsonBody;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.Pact;
 import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
@@ -17,6 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException.NotFound;
+
+import static io.pactfoundation.consumer.dsl.LambdaDsl.newJsonBody;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @ExtendWith(PactConsumerTestExt.class)
 class KorvklientConsumerTest {

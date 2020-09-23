@@ -1,10 +1,11 @@
 package se.mejsla.korv.korvcli;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+
+import java.util.List;
 
 @EqualsAndHashCode
 @ToString
